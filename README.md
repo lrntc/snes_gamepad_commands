@@ -1,5 +1,7 @@
 # snes_gamepad_commands
 
+Requires: pygame
+
 What does it do?
 ================
 
