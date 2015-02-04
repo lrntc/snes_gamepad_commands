@@ -1,4 +1,6 @@
 import pygame
+import subprocess
+import os
 
 runThis = True
 
@@ -24,23 +26,35 @@ while runThis:
         GREEN = MyJoystick.get_button(3)
         RB = MyJoystick.get_button(5)
         LB = MyJoystick.get_button(4)
-        runThis = False
+        
 
         if BLUE == True:
             print("Blue button pressed")
+            os.chdir("/home/pi/adafruit-pi-cam-master")
+            subprocess.Popen(["python", "cam.py"])
+            runThis = False
 
         if RED == True:
             print("Red button pressed")
-
+            os.chdir("/home/pi/")
+            subprocess.Popen(["sh", "gui_py.sh"])
+            runThis = False
+            
         if YELLOW == True:
             print("Yellow button pressed")
+            os.chdir("/home/pi/Desktop/IR Project/pi-timelapse-process-hdr/")
+            subprocess.Popen(["sh", "runtimelapse.sh"])
 
         if GREEN == True:
             print("Green button pressed")
+            os.chdir("/home/pi/Desktop/IR Project/pi-timelapse-process-hdr/")
+            subprocess.Popen(["sh", "hdr_picture.sh"])
 
         if RB == True:
             print("Right button pressed")
+            exit()
 
         if LB == True:
             print("Left button pressed")
+            subprocess.call("sudo halt")
         
